@@ -136,6 +136,9 @@ const algoliaCommand = async(hexo, args, callback) => {
   await hexo.call('generate')
   await hexo.database.load()
 
+  console.log(hexo.database.model);
+  console.log(hexo.database.model());
+
   let posts = hexo.database.model('Post').find({published: true}).sort('date', 'asc').toArray()
 
   if (!posts.length) {
